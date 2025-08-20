@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Untuk Anata, Cintaku</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -75,7 +76,6 @@
             color: #c2185b;
         }
         
-        /* Flower styles */
         .flower {
             position: absolute;
             font-size: 2rem;
@@ -85,7 +85,6 @@
             user-select: none;
         }
         
-        /* Button styles */
         .btn {
             background-color: #d81b60;
             color: white;
@@ -106,14 +105,57 @@
             box-shadow: 0 8px 20px rgba(216, 27, 96, 0.4);
         }
         
-        /* Responsive design */
+        .instructions {
+            margin-top: 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            max-width: 600px;
+            font-family: Arial, sans-serif;
+            text-align: left;
+        }
+        
+        .instructions h2 {
+            color: #d81b60;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .instructions ol {
+            padding-left: 20px;
+        }
+        
+        .instructions li {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+        
         @media (max-width: 768px) {
             h1 { font-size: 2.5rem; }
             .message { font-size: 1.4rem; }
             .container { padding: 25px; }
         }
+        
+        @keyframes fall {
+            to {
+                top: 100vh;
+            }
+        }
+        
+        @keyframes sway {
+            from {
+                transform: translateX(-20px) rotate(-10deg);
+            }
+            to {
+                transform: translateX(20px) rotate(10deg);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -137,6 +179,21 @@
             <p>Selamanya milikmu,</p>
             <p>Yang selalu mencintaimu</p>
         </div>
+    </div>
+
+    <div class="instructions">
+        <h2>Cara Hosting Website Ini di GitHub</h2>
+        <ol>
+            <li>Salin semua kode halaman ini (Ctrl+A lalu Ctrl+C)</li>
+            <li>Buat file baru di komputer Anda, beri nama <strong>index.html</strong></li>
+            <li>Buka file tersebut dengan text editor, tempel kode yang disalin (Ctrl+V)</li>
+            <li>Simpan file</li>
+            <li>Buka <a href="https://github.com" target="_blank">github.com</a> dan buat akun (jika belum punya)</li>
+            <li>Buat repository baru dengan nama <strong>username.github.io</strong> (ganti "username" dengan username GitHub Anda)</li>
+            <li>Upload file index.html ke repository tersebut</li>
+            <li>Pergi ke Settings → Pages → pilih branch "main" → Save</li>
+            <li>Tunggu beberapa menit, lalu akses <strong>https://username.github.io</strong></li>
+        </ol>
     </div>
 
     <script>
@@ -168,26 +225,6 @@
             }
         }
         
-        // Add animations for flowers
-        const style = document.createElement('style');
-        style.innerHTML = `
-            @keyframes fall {
-                to {
-                    top: 100vh;
-                }
-            }
-            
-            @keyframes sway {
-                from {
-                    transform: translateX(-20px) rotate(-10deg);
-                }
-                to {
-                    transform: translateX(20px) rotate(10deg);
-                }
-            }
-        `;
-        document.head.appendChild(style);
-        
         // Button functionality
         document.getElementById('moreBtn').addEventListener('click', function() {
             const messages = [
@@ -206,16 +243,6 @@
             newMessage.textContent = randomMessage;
             newMessage.style.marginTop = '20px';
             newMessage.style.animation = 'fadeIn 2s';
-            
-            // Add fadeIn animation
-            const fadeStyle = document.createElement('style');
-            fadeStyle.innerHTML = `
-                @keyframes fadeIn {
-                    from { opacity: 0; }
-                    to { opacity: 1; }
-                }
-            `;
-            document.head.appendChild(fadeStyle);
             
             // Insert the message before the button
             const btn = document.getElementById('moreBtn');
